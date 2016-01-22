@@ -13,13 +13,18 @@ schema = dict(
 )
 
 
+class View(object):
+    pass
+
+
 class Stream(object):
     def __init__(self, path):
         self.path = path
 
     def push_entry(self, entry):
         data = dict(
-            timestamp=datetime.datetime.now(),
+            _timestamp=datetime.datetime.now(),
+            _schema_version=schema['version'],
         )
         data.update(entry)
 
